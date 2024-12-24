@@ -39,9 +39,9 @@ jobs:
       # Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ vars.MY_VAR }}:1.0.0 .
+          docker build -t ghcr.io/${{ vars.MY_VAR }}:latest .
       
       # Push Docker image to GitHub Container Registry
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ vars.MY_VAR }}:1.0.0
+          docker push ghcr.io/${{ vars.MY_VAR }}:latest
