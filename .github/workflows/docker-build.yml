@@ -17,13 +17,22 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         
-      - name: Build the project with Maven
-        run: mvn clean install
-        
       - name: TESTTT
         run: |
           ls
           ls /
+      
+      # Check Java version
+      - name: Verify Java version
+        run: java -version
+
+      # Check Maven version
+      - name: Verify Maven version
+        run: mvn -v
+      
+      - name: Build the project with Maven
+        run: mvn clean install
+
 
       # Log in to GitHub Container Registry
       - name: Log in to GitHub Container Registry
