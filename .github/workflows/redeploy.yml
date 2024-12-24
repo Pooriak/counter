@@ -19,8 +19,8 @@ jobs:
           -d '{
                 "query": "mutation deplo { 
                   serviceInstanceDeployV2(
-                    environmentId: "b5a837db-22ee-4a42-a992-0c8999101169", 
-                    serviceId: "68a6bb6a-a871-4e9f-961a-251363532a11"
+                    environmentId: \"b5a837db-22ee-4a42-a992-0c8999101169\", 
+                    serviceId: \"68a6bb6a-a871-4e9f-961a-251363532a11\"
                   ) 
                 }"
               }'
