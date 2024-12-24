@@ -10,12 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
       # Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        
+      - name: Set username to lowercase
+        run: |
+          USERNAME=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+          echo "Lowercase username: $USERNAME"
 
       # Log in to GitHub Container Registry
       - name: Log in to GitHub Container Registry
@@ -28,7 +34,7 @@ jobs:
       # Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}:latest .
+          docker build -t ghcr.io/$USERNAME:latest .
       
       # Push Docker image to GitHub Container Registry
       - name: Push Docker image
