@@ -9,17 +9,18 @@ on:
 jobs:
   redeploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Trigger Railway Redeploy
-  run: |
-    curl -X POST https://backboard.railway.com/graphql/v2 \
-    -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
-    -H "Content-Type: application/json" \
-    -d '{
-          "query": "mutation deplo { 
-            serviceInstanceDeployV2(
-              environmentId: \"${{ secrets.RAILWAY_ENVIRONMENT_ID }}\", 
-              serviceId: \"${{ secrets.RAILWAY_SERVICE_ID }}\"
-            ) 
-          }"
-        }'
+        run: |
+          curl -X POST https://backboard.railway.com/graphql/v2 \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+                "query": "mutation deplo { 
+                  serviceInstanceDeployV2(
+                    environmentId: "b5a837db-22ee-4a42-a992-0c8999101169", 
+                    serviceId: "68a6bb6a-a871-4e9f-961a-251363532a11"
+                  ) 
+                }"
+              }'
