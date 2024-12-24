@@ -10,9 +10,11 @@ jobs:
   redeploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Railway Deployment
+      - name: Restart Railway Deployment
         run: |
-          curl -X POST \
+          curl -X POST https://backboard.railway.com/graphql/v2 \
           -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
-          -d '{}' \
-          "https://backboard.railway.app/v1/services/68a6bb6a-a871-4e9f-961a-251363532a11/deploy"
+          -H "Content-Type: application/json" \
+          -d '{ 
+                "query": "mutation deploymentRestart { deploymentRestart(id: \"68a6bb6a-a871-4e9f-961a-251363532a11\") }"
+              }'
